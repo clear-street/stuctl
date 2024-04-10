@@ -1,0 +1,15 @@
+# Add files here to ignore them from prettier formatting
+
+dist
+node_modules
+
+package.json
+package-lock.json
+tsconfig.json
+
+.eslintignore
+.eslintrc
+.gitignore
+.prettierignore
+.prettierrc.js
+.tool-versions

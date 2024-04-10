@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "NodeNext",
+    "strict": true,
+    "esModuleInterop": true,
+    "outDir": "dist",
+    "baseUrl": "./src",
+    "rootDir": "./src",
+    "jsx": "react",
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules"]
+}
