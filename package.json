@@ -4,6 +4,7 @@
   "description": "Clear Street Studio's CLI",
   "author": "Clear Street",
   "private": false,
+  "repository": "https://github.com/clear-street/stuctl",
   "main": "index.js",
   "type": "module",
   "bin": {
