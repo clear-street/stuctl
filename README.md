@@ -52,10 +52,3 @@ This will default all commands that require an account to use `<your-account>`.
 
 This will point `stuctl` to the provided Studio API URL.
 
-### Legal Disclaimer
-
-THIS SOFTWARE IS PROVIDED BY CLEAR STREET "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL CLEAR STREET BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-
-By using this software, you acknowledge that you have read this disclaimer, understand it, and agree to be bound by its terms. Clear Street does not warrant that the functions contained in the software will meet your requirements or that the operation of the software will be uninterrupted or error-free. You assume responsibility for selecting the software to achieve your intended results and for the use and results obtained from the software.
-
-This disclaimer of warranty constitutes an essential part of this agreement. No use of the software is authorized hereunder except under this disclaimer.
