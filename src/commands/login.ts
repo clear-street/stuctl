@@ -4,7 +4,7 @@ import chalk from 'chalk';
 import { Command, OptionValues } from 'commander';
 import jwt, { JwtPayload } from 'jsonwebtoken';
 import ora from 'ora';
-import { DEFAULT_AUTH_URL, getErrorString, RCPATH } from '../common/index.js';
+import { DEFAULT_AUTH_URL, getErrorString, RCPATH, saveRCValue } from '../common/index.js';
 
 const login = () =>
   new Command('login')
@@ -44,7 +44,7 @@ const login = () =>
         spinner.succeed(`Token received from ${opt.authUrl}`);
         spinner.start(`Saving token to ${RCPATH}`);
 
-        setEnvVariable('AUTH', token, RCPATH);
+        saveRCValue('AUTH', token);
         const info = getExpiryStr(token);
         if (info) {
           spinner.succeed(
@@ -55,26 +55,6 @@ const login = () =>
         }
       });
     });
-
-const setEnvVariable = (key: string, value: string, path: string) => {
-  const keyEquals = `${key}=`;
-  const newEntry = `${keyEquals}${value}`;
-  const regex = new RegExp(`^${keyEquals}.*$`, 'm');
-  if (fs.existsSync(path)) {
-    let env = fs.readFileSync(path, { encoding: 'utf8' });
-    if (env.includes(keyEquals)) {
-      // Replace existing entry
-      env = env.replace(regex, newEntry);
-    } else {
-      // Add new entry
-      env += newEntry;
-    }
-    fs.writeFileSync(path, env);
-  } else {
-    // Create new .env file
-    fs.writeFileSync(path, newEntry);
-  }
-};
 
 const getExpiryStr = (token: string): { remaining: string; expiry: string } | undefined => {
   const decoded = jwt.decode(token);

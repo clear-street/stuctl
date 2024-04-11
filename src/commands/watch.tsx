@@ -65,7 +65,10 @@ const PnlView: React.FC<ViewProps> = ({ auth, url, account }) => {
         for (const row of res.data.data) {
           timestamp = Math.max(row.timestamp, timestamp);
         }
-        setState({ pnl: res.data.data, timestamp: formatTimestamp(timestamp) });
+        setState({
+          pnl: res.data.data.slice(0, Math.min(res.data.data.length, 25)),
+          timestamp: formatTimestamp(timestamp),
+        });
       } catch (e) {
         console.error(`Failed to create view: ${e}`);
       }
@@ -116,7 +119,7 @@ const OrdersView: React.FC<ViewProps> = ({ auth, url, account }) => {
   React.useEffect(() => {
     const interval = setInterval(async () => {
       try {
-        const u = `${url}/v2/accounts/${account}/orders?page_size=100`;
+        const u = `${url}/v2/accounts/${account}/orders?page_size=25`;
         const res = await axios.get(u, {
           headers: {
             Authorization: `Bearer ${auth}`,

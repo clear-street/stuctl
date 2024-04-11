@@ -4,6 +4,7 @@ import buy from './commands/buy.js';
 import cancel from './commands/cancel.js';
 import cat from './commands/cat.js';
 import login from './commands/login.js';
+import logout from './commands/logout.js';
 import sell from './commands/sell.js';
 import watch from './commands/watch.js';
 
@@ -15,4 +16,5 @@ program
   .addCommand(watch())
   .addCommand(cat())
   .addCommand(login())
+  .addCommand(logout())
   .parse(process.argv);
