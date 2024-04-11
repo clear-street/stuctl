@@ -3,6 +3,7 @@
   "version": "1.0.6",
   "description": "Clear Street Studio's CLI",
   "author": "Clear Street",
+  "private": false,
   "main": "index.js",
   "type": "module",
   "bin": {
