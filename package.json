@@ -15,7 +15,7 @@
     "lint": "prettier --write . && eslint ."
   },
   "keywords": [],
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "@tqman/ink-table": "^0.0.0-development",
     "axios": "^1.6.8",

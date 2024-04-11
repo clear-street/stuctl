@@ -11,7 +11,7 @@ Studio control, better known as <i>stuctl</i> (affectionately pronounced <i>stew
 
 ## Usage
 
-The only prerequisite for using `stuctl` is having [NodeJS](https://nodejs.org/) `v20.11.1` or higher installed.
+The only prerequisite for using `stuctl` is having [nodejs](https://nodejs.org/) `v20.11.1` or higher installed.
 
 Assuming you're running the right version node, run the following command to install `stuctl`:
 
