@@ -1,6 +1,5 @@
 <p align="center">
-<img src="logo.png" width="25%" height="25%" />
-<h1 align="center">stuctl</h1>
+<img src="logo.png" width="37%" height="37%" />
 <p align="center">
 Studio control, better known as <i>stuctl</i> (affectionately pronounced <i>stew</i>-<i>cuttle</i>), is a simple command-line tool for interacting with Clear Street Studio via it's <a href="https://docs.clearstreet.io">public APIs</a>
 </p>
