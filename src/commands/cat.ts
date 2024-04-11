@@ -8,8 +8,8 @@ const cat = () =>
     new Command('cat').description('Cat your trading activity').action(
       authed(async (auth: string, options: OptionValues) => {
         const { account, url } = options;
-        const ws = new WebSocket(`${url}/ws`);
-        const spinner = ora(`Connecting to ${url}/ws`).start();
+        const ws = new WebSocket(`${url}/v2/ws`);
+        const spinner = ora(`Connecting to ${url}/v2/ws`).start();
 
         ws.on('message', (data: WebSocket.Data) => {
           const json = JSON.parse(data.toString());

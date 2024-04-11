@@ -51,4 +51,3 @@ This will default all commands that require an account to use `<your-account>`.
 - `URL=<studio-api-url>`
 
 This will point `stuctl` to the provided Studio API URL.
-
