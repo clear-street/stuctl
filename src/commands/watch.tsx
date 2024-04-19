@@ -24,8 +24,8 @@ interface Pnl {
   symbol: string;
   quantity: number;
   price: string;
-  buys: number;
-  sells: number;
+  bought_quantity: number;
+  sold_quantity: number;
   realized_pnl: number;
   unrealized_pnl: number;
   total_pnl: number;
@@ -38,6 +38,7 @@ interface Order {
   price: string;
   quantity: string;
   status: string;
+  state: string;
   order_id: string;
   order_type: string;
   filled_quantity: number;
@@ -51,6 +52,23 @@ interface PnlViewState {
 
 const PnlView: React.FC<ViewProps> = ({ auth, url, account }) => {
   const [state, setState] = React.useState<PnlViewState>({ pnl: [], timestamp: '' });
+
+  const CustomCell = ({ children, column }: CellProps) => {
+    if (!children) {
+      return <Text color={'white'}>{children}</Text>;
+    }
+    if ([5, 6, 7].indexOf(column) !== -1) {
+      const val = children?.toString().trim();
+      if (val === "0") {
+        return <Text color={'white'}>{children}</Text>;
+      }
+      if (val.startsWith('-')) {
+        return <Text color={'red'}>{children}</Text>;
+      }
+      return <Text color={'green'}>{children}</Text>;
+    }
+    return <Text color={'white'}>{children}</Text>;
+  };
 
   React.useEffect(() => {
     const interval = setInterval(async () => {
@@ -85,19 +103,20 @@ const PnlView: React.FC<ViewProps> = ({ auth, url, account }) => {
             Symbol: row.symbol,
             Quantity: row.quantity,
             Price: Number.parseFloat(row.price).toFixed(2),
-            Buys: row.buys,
-            Sells: row.sells,
+            Bought: row.bought_quantity,
+            Sold: row.sold_quantity,
             RealizedPnl: row.realized_pnl.toFixed(0),
             UnrealizedPnl: row.unrealized_pnl.toFixed(0),
             TotalPnl: row.total_pnl.toFixed(0),
           };
         })}
+        cell={CustomCell}
         columns={[
           { key: 'Symbol', align: 'left' },
           { key: 'Quantity', align: 'right' },
           { key: 'Price', align: 'right' },
-          { key: 'Buys', align: 'right' },
-          { key: 'Sells', align: 'right' },
+          { key: 'Bought', align: 'right' },
+          { key: 'Sold', align: 'right' },
           { key: 'RealizedPnl', align: 'right' },
           { key: 'UnrealizedPnl', align: 'right' },
           { key: 'TotalPnl', align: 'right' },
@@ -119,13 +138,13 @@ const OrdersView: React.FC<ViewProps> = ({ auth, url, account }) => {
   React.useEffect(() => {
     const interval = setInterval(async () => {
       try {
-        const u = `${url}/v2/accounts/${account}/orders?page_size=25`;
+        const u = `${url}/v2/accounts/${account}/orders?page_size=2000`;
         const res = await axios.get(u, {
           headers: {
             Authorization: `Bearer ${auth}`,
           },
         });
-        setState(res.data.data.sort((a: Order, b: Order) => a.updated_at - b.updated_at));
+        setState(res.data.data.sort((a: Order, b: Order) => a.updated_at - b.updated_at).filter((o: Order) => o.state === 'open'));
       } catch (e) {
         console.error(`Failed to create view: ${e}`);
       }
@@ -143,6 +162,7 @@ const OrdersView: React.FC<ViewProps> = ({ auth, url, account }) => {
           Side: order.side,
           Price: order.price ? Number.parseFloat(order.price).toFixed(2) : '',
           Quantity: order.quantity,
+          State: order.state,
           Status: order.status,
           OrderId: order.order_id,
           OrderType: order.order_type,
@@ -157,6 +177,7 @@ const OrdersView: React.FC<ViewProps> = ({ auth, url, account }) => {
         { key: 'Side', align: 'left' },
         { key: 'Price', align: 'right' },
         { key: 'Quantity', align: 'right' },
+        { key: 'State', align: 'left' },
         { key: 'Status', align: 'left' },
         { key: 'OrderId', align: 'left' },
         { key: 'OrderType', align: 'left' },
