@@ -57,6 +57,7 @@ export const placeOrder = async (
         price: price,
         time_in_force: 'day',
         symbol: symbol,
+        strategy_type: 'sor'
       },
       {
         headers: {
