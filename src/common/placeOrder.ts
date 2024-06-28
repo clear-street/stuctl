@@ -6,7 +6,7 @@ import ora from 'ora';
 import { getErrorString } from './errors.js';
 
 export const placeOrder = async (
-  side: 'buy' | 'sell',
+  side: 'buy' | 'sell' | 'sell-short',
   quantity: number,
   symbol: string,
   price: number,
@@ -15,7 +15,12 @@ export const placeOrder = async (
 ) => {
   const { account, url, confirm } = options;
 
-  const displaySide = side === 'buy' ? chalk.green(side) : chalk.red(side);
+  const sideMap = {
+    buy: chalk.green,
+    sell: chalk.red,
+    'sell-short': () => chalk.red('short'),
+  }
+  const displaySide = sideMap[side](side);
   const displaySymbol = chalk.magenta(symbol);
   const displayQuantity = chalk.bold(quantity);
   const displayPrice = chalk.bold(price);
