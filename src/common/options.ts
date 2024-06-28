@@ -24,5 +24,5 @@ export const addOptions = (cmd: Command): Command => {
           process.env.URL ? `${process.env.URL} (from environment variable)` : DEFAULT_URL
         )
         .makeOptionMandatory(true)
-    );
+    )
 };

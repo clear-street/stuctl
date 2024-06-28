@@ -41,7 +41,17 @@ This app persists data, such as access tokens, for use between runs. This data i
 
 Since access tokens are stored in this file, _it's important you keep this file safe and secure._
 
-You can additionally manually add these values to your `.sturc` file to avoid having to provide them through command-line arguments:
+You can set the default account with the command:
+```bash
+$ stuctle set account <your-account>
+```
+You can set the default URL with the command:
+```bash
+$ stuctle set url <studio-api-url>
+```
+Which will store the arguments for you in the `.sturc` file to avoid having to provide them through command-line arguments.
+
+You can additionally manually add these values to your `.sturc`:
 
 - `ACCOUNT=<your-account>`
 
