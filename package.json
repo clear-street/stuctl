@@ -1,6 +1,6 @@
 {
   "name": "@clear-street/stuctl",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Clear Street Studio's CLI",
   "author": "Clear Street",
   "private": false,
